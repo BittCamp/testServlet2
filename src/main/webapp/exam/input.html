@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+    #testForm {
+        position: relative; 
+        top: 50px; 
+        left: 50px;
+    }
+   #testForm div{
+		color: red;
+		font-size: 9pt;
+		font-weight: bold;
+	}
+</style>
+</head>
+<body>
+<form name="testForm" id="testForm" method="get" 
+	  action="/testServlet2/DBTestServlet"> <!--action="http://localhost:8080/testServlet2/DBTestServlet"  -->
+	<table border="1" cellpadding="10" cellspacing="0" style="width: 300px;height: 100px;"><!-- border-collapse: collapse; -->
+		  <tr>
+		    <th width="100">이름</th> <!-- th는 자동으로 굵게 그리고 자동으로 가운데 정렬되게 함 -->
+		    <td>
+		    	<input type="text" name="name" id="name" maxlength="5" placeholder="이름 입력" /> <!-- 위에 투명한글씨 투명한 글씨로  -->
+		    	<div id="nameDiv"></div>
+		    </td>
+		  </tr>
+		  <tr>
+		    <th>나이</th>
+		    <td>
+		    	<input type="number" name="age" id="age"  /> <!-- type="number"  숫자만 들어가게함.  -->
+		    	<div id="ageDiv"></div>
+		    </td>
+		  </tr>
+		  <tr>
+		    <th>키</th>
+		    <td>
+		    	<input type="number" name="height" id="height" />
+		    	<div id="heightDiv"></div>
+		    </td>
+		  </tr>
+		  <tr>
+		    <td colspan="2" align="center">
+		    	<input type="button" value="등록" onclick="checkInput()" /> 
+		    	<input type='button' value='목록' onclick="location.href='/testServlet2/DBListServlet'" />
+		    	<input type="reset" value="다시작성" />
+		    </td>
+		  </tr>
+	</table>	
+</form>
+<script>
+function checkInput(){
+	document.getElementById("nameDiv").innerText = "";
+	document.getElementById("ageDiv").innerText = "";
+	document.getElementById("heightDiv").innerText = "";
+	if(document.testForm.name.value == ""){
+		document.getElementById("nameDiv").innerText = "이름 입력";
+	}else if(document.testForm.age.value == ""){
+		document.getElementById("ageDiv").innerText = "나이 입력";
+	}else if(document.testForm.height.value == ""){
+		document.getElementById("heightDiv").innerText = "키 입력";
+	}else{
+		document.testForm.submit();
+	}
+}
+</script>
+</body>
+</html>
